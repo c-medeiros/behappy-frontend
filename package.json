@@ -2,13 +2,12 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
-<<<<<<< HEAD
-=======
+
   "engines": {
     "npm": "6.2.0",
     "node": "10.8.0"
   },
->>>>>>> 5a45fec93621faf1afbfd7667a7f18af0ab336b2
+
   "dependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
@@ -20,8 +19,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
-<<<<<<< HEAD
+
 }
-=======
+
 }
->>>>>>> 5a45fec93621faf1afbfd7667a7f18af0ab336b2
+
