@@ -1,14 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import Label from '../Label';
 import Input from '../Input';
+import GenderSelector from '../GenderSelector';
 
-class NewUser extends Component {
+class NewUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user: {
-        name: 'Minora'
+        name: 'Minora',
       },
       validation: {
         invalidName: false
@@ -19,6 +20,13 @@ class NewUser extends Component {
   updateUserName = (event) => {
     let user = this.state.user;
     user.name = event.target.value;
+    this.setState({ user: user });
+  }
+
+  updateUserGender = (event, gender) => {
+    event.preventDefault();
+    let user = this.state.user;
+    user.gender = gender;
     this.setState({
       user: user
     });
@@ -28,18 +36,13 @@ class NewUser extends Component {
     return (
       <div className="center">
         <form className="pure-form pure-form-stacked">
-          <Label 
-              htmlFor="name" 
-              text="Quem é você?" 
-              invalidValue={this.state.validation.invalidName} />
-          <Input 
-              id="name" 
-              placeholder="Digite seu nome" 
-              maxLength="40" 
-              readOnly={false}
-              invalidValue={this.state.validation.invalidName}
-              defaultValue={this.state.user.name}
-              onChange={this.updateUserName} />
+          <Label htmlFor="name" text="Quem é você?" invalidValue={this.state.validation.invalidName} />
+          <Input id="name" placeholder="Digite seu nome" maxLength="40" readOnly={false} invalidValue={this.state.validation.invalidName} defaultValue={this.state.user.name} onChange={this.updateUserName} />
+          <GenderSelector
+            invalidValue={this.state.validation.invalidGender}
+            gender={this.state.user.gender}
+            updateGender={this.updateUserGender}
+          />
         </form>
       </div>
     );

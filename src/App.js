@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 
 import './App.css';
 import Header from './components/Header';
 import NewUser from './components/NewUser';
-import Label from './components/Label';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <div>
         <Header />
         <NewUser />
-        <Label />
       </div>
     );
   }
