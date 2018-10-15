@@ -1,4 +1,6 @@
 import Avatar from './Avatar';
+import Repository from '../infrastructure/Repository';
+const repository = new Repository();
 
 class User {
   constructor() {
@@ -19,6 +21,27 @@ class User {
     return ['m', 'f'].some(param => {
       return this.gender === param;
     });
+  }
+
+  save(callback) {
+    repository.save(this, callback);
+  }
+
+  static get(success, error) {
+    repository.get(json => {
+      let user = new User();
+      user.name = json.name;
+      user.gender = json.gender;
+      user.avatar = new Avatar(
+        json.avatar.index,
+        json.avatar.description,
+      );
+      success(user);
+    }, error);
+  }
+
+  toString() {
+    return `${this.name}, ${this.avatar.toString()}`;
   }
 }
 
